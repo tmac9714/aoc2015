@@ -21,3 +21,28 @@ for i in inp:
         break
 print(f, position)
     
+#################################
+import os
+os.getcwd()
+os.chdir("./aoc2015")
+
+inputd2 = "inputd2.txt"
+list=[]
+paper_all=0
+ribbon_all=0
+with open(inputd2) as f:
+    for line in f:
+        list.append(line.strip())
+        l,w,h=line.split('x')
+        l,w,h=int(l),int(w),int(h)
+        a=l*w
+        b=w*h
+        c=h*l
+        extra=min(a,b,c)
+        paper=2*a+2*b+2*c+extra
+        paper_all += paper
+        ribbon=min(2*l+2*w,2*w+2*h,2*h+2*l)
+        bow=l*w*h
+        ribbon_all += ribbon+bow
+print(paper_all)
+print(ribbon_all)
